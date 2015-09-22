@@ -4,6 +4,50 @@
 Por cuestiones de legibilidad, se ha separado el MR por sectores de acuerdo
     al comportamiento que modela cada uno.
 
+\subsection{Lugar de ocurrencia del siniestro}
+
+\textbf{Lugar}(
+    \uline{idLugar},
+    coordenadasGPS,
+    direccion,
+    \dashuline{idViaPublica}
+)\\
+\textbf{PK} = \textbf{CK} = \{idLugar\}\\
+\textbf{FK} = \{idViaPublica\}\\
+
+\textbf{ViaPublica}(
+    \uline{idViaPublica},
+    coordenadasGPS,
+)\\
+\textbf{PK} = \textbf{CK} = \{idViaPublica\}\\
+
+
+\textbf{Ruta}(
+    \uline{\dashuline{idLugar}},
+    KMs,
+    territorio,
+    numeroRuta
+)\\
+\textbf{PK} = \textbf{CK} = \textbf{FK} = \{idLugar\}\\
+
+\textbf{Autopista}(
+    \uline{\dashuline{idLugar}},
+    nombre,
+    KMs
+)\\
+\textbf{PK} = \textbf{CK} = \textbf{FK} = \{idLugar\}\\
+
+
+\textbf{Calle}(
+    \uline{\dashuline{idLugar}},
+    provincia,
+    ciudad,
+    nombre,
+    altura
+)\\
+\textbf{PK} = \textbf{CK} = \textbf{FK} = \{idLugar\}\\
+
+
 \subsection{Análisis, estudios, peritajes}
 
 \textbf{Informe}(
