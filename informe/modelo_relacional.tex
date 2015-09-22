@@ -4,6 +4,119 @@
 Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
     de acuerdo al comportamiento que modela cada uno.
 
+\subsection{Modelado general del siniestro}
+
+\textbf{Siniestro}(
+    \uline{idSiniestro},
+    fecha,
+    hora,
+    \dashuline{idLugar},
+    \dashuline{idTipoAccidente},
+    \dashuline{idDenuncia},
+    \dashuline{idInforme},
+    \dashuline{idCondicion},
+    \dashuline{idTipoColision},
+    \dashuline{idCausa}
+)\\
+\textbf{PK} = \textbf{CK} = \{idSiniestro\}\\
+\textbf{FK} = \{idLugar, idTipoAccidente, idDenuncia, idInforme, idCondicion, idTipoColision, idCausa\}\\
+
+\textbf{TipoCausaProbable}(
+    \uline{idCausa},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idCausa\}\\
+
+\textbf{TipoDeColision}(
+    \uline{idTipoColision},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoColision\}\\
+
+\textbf{TipoDeAccidente}(
+    \uline{idTipoAccidente},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoAccidente\}\\
+
+
+\textbf{Participan}(
+    \dashuline{\uline{idSiniestro}},
+    \dashuline{\uline{dominio}},
+    \dashuline{\uline{DNI}},
+    usoCintiron
+)\\
+\textbf{PK} = \textbf{CK} = \{(idSiniestro, DNI, dominio)\}\\
+\textbf{FK} = \{idSiniestro, DNI, dominio\}\\
+
+
+\subsection{Modelado de las personas involucradas en el siniestro}
+
+\textbf{Siniestro}(
+    \uline{idSiniestro},
+    fecha,
+    hora,
+    \dashuline{idLugar},
+    \dashuline{idTipoAccidente},
+    \dashuline{idDenuncia},
+    \dashuline{idInforme},
+    \dashuline{idCondicion},
+    \dashuline{idTipoColision},
+    \dashuline{idCausa}
+)\\
+\textbf{PK} = \textbf{CK} = \{idSiniestro\}\\
+\textbf{FK} = \{idLugar, idTipoAccidente, idDenuncia, idInforme, idCondicion, idTipoColision, idCausa\}\\
+
+\textbf{Testigo}(
+    \dashuline{\uline{DNI}}
+)\\
+\textbf{PK} = \textbf{CK} = \{DNI\}\\
+\textbf{FK} = \{DNI\}\\
+\textit{El caso es análogo para las entidades Peaton y Acompañante.}
+
+\textbf{Participan}(
+    \dashuline{\uline{DNI}},
+    \dashuline{\uline{idSiniestro}},
+    usoCinturon,
+    \dashuline{idVehiculo}
+)\\
+\textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
+\textbf{FK} = \{DNI, idSiniestro, idVehiculo\}\\
+
+\textbf{Participa}(
+    \dashuline{\uline{DNI}},
+    \dashuline{\uline{idSiniestro}}
+)\\
+\textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
+\textbf{FK} = \{DNI, idSiniestro\}\\
+\textit{El caso es análogo para la relacion Atestigua.}
+
+\textbf{Persona}(
+    \dashuline{\uline{DNI}},
+    nombre,
+    apellido
+)\\
+\textbf{PK} = \textbf{CK} = \{DNI\}\\
+\textbf{FK} = \{DNI\}\\
+
+\textbf{Antecedente}(
+    \uline{idAntecedente},
+    fecha,
+    descripcion,
+    \dashuline{DNI}
+)\\
+\textbf{PK} = \textbf{CK} = \{idAntecedente\}\\
+\textbf{FK} = \{DNI\}\\
+
+\textbf{Denuncia}(
+    \uline{idDenuncia},
+    fecha,
+    \dashuline{DNI},
+    \dashuline{idSiniestro}
+)\\
+\textbf{PK} = \textbf{CK} = \{idAntecedente\}\\
+\textbf{FK} = \{DNI\}\\
+
 
 \subsection{Modelado de un conductor}
 
