@@ -4,6 +4,62 @@
 Por cuestiones de legibilidad, se ha separado el MR por sectores de acuerdo
     al comportamiento que modela cada uno.
 
+\subsection{Modelado de un vehículo}
+
+\textbf{Vehiculo}(
+    \uline{dominio},
+    fechaPatentamiento,
+    \dashuline{idTipoCategoria},
+    \dashuline{idTipoVehiculo}
+)\\
+\textbf{PK} = \textbf{CK} = \{dominio\}\\
+\textbf{FK} = \{idTipoCategoria, idTipoVehiculo\}\\
+
+\textbf{Categoria}(
+    \uline{idTipoCategoria},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoCategoria\}\\
+
+\textbf{TipoVehiculo}(
+    \uline{idTipoVehiculo},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoVehiculo\}\\
+
+\textbf{Poliza}(
+    \uline{nroPoliza},
+    fechaDesde,
+    fechaHasta,
+    \dashuline{dominio},
+    \dashuline{idTipoCobertura},
+    \dashuline{idTipoCompania}
+)\\
+\textbf{PK} = \textbf{CK} = \{nroPoliza\}\\
+\textbf{FK} = \{dominio, idTipoCobertura, idTipoCompania\}\\
+
+\textbf{TipoCobertura}(
+    \uline{idTipoCobertura},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoCobertura\}\\
+
+\textbf{TipoCompania}(
+    \uline{idTipoCompania},
+    CUIT,
+    nombre
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoCompania\}\\
+
+\textbf{TieneConductorHabilitado}(
+    \uline{\dashuline{DNI}},
+    \uline{\dashuline{dominio}}
+)\\
+\textbf{PK} = \textbf{CK} = \{(DNI, idVehiculo)\}\\
+\textbf{FK} = \{DNI, dominio\}
+
+
+
 \subsection{Lugar de ocurrencia del siniestro}
 
 \textbf{Lugar}(
