@@ -1,8 +1,48 @@
 \section{Modelo Relacional}
 \small
 
-Por cuestiones de legibilidad, se ha separado el MR por sectores de acuerdo
-    al comportamiento que modela cada uno.
+Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
+    de acuerdo al comportamiento que modela cada uno.
+
+
+\subsection{Modelado de un conductor}
+
+\textbf{Conductor}(
+    \dashuline{\uline{DNI}}
+)\\
+\textbf{PK} = \textbf{CK} = \{DNI\}\\
+\textbf{FK} = \{DNI\}\\
+
+\textbf{Licencia}(
+    \uline{nroLicencia},
+    fechaVencimiento,
+    \dashuline{DNI},
+    \dashuline{idTipoLicencia}
+)\\
+\textbf{PK} = \textbf{CK} = \{nroLicencia\}\\
+\textbf{FK} = \{DNI, idTipoLicencia\}\\
+
+\textbf{TipoLicencia}(
+    \uline{idTipoLicencia},
+    codigo,
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoLicencia\}\\
+
+\textbf{Infraccion}(
+    \uline{idInfraccion},
+    fecha,
+    \dashuline{DNI},
+    \dashuline{idTipoInfraccion}
+)\\
+\textbf{PK} = \textbf{CK} = \{idInfraccion\}\\
+\textbf{FK} = \{DNI, idTipoInfraccion\}\\
+
+\textbf{TipoInfraccion}(
+    \uline{idTipoInfraccion},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoInfraccion\}\\
 
 \subsection{Modelado de un vehículo}
 
@@ -115,20 +155,19 @@ Por cuestiones de legibilidad, se ha separado el MR por sectores de acuerdo
 \textbf{FK} = \{idTipoInforme\}\\
 
 \textbf{Funcionario}(
-    \uline{idFuncionario},
+    \dashuline{\uline{DNI}},
     cargo,
-    \dashuline{DNI},
     \dashuline{idOrganismo}
 )\\
-\textbf{PK} = \textbf{CK} = \{idFuncionario\}\\
+\textbf{PK} = \textbf{CK} = \{DNI\}\\
 \textbf{FK} = \{DNI, idOrganismo\}\\
 
 \textbf{FueRealizadoPor}(
-    \dashuline{\uline{idFuncionario}},
+    \dashuline{\uline{DNI}},
     \dashuline{\uline{idInforme}}
 )\\
-\textbf{PK} = \textbf{CK} = \{(idFuncionario, idInforme)\}\\
-\textbf{FK} = \{idFuncionario, idInforme\}\\
+\textbf{PK} = \textbf{CK} = \{(DNI, idInforme)\}\\
+\textbf{FK} = \{DNI, idInforme\}\\
 
 \textbf{Organismo}(
     \uline{idOrganismo},
