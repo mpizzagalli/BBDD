@@ -14,6 +14,6 @@ Repo para el tp1 de bases de datos.
     accidente (atropello, vuelco, incendio, caída del ocupante, etc), un listado de licencias
     de conducir y la cantidad de veces que cada una de estas licencias incurrió en la
     modalidad consultada.  Resuelto(Gaston)
-  * Resolución de alguna de las implicancias/restricciones del problema utilizando triggers.
+  * Resolución de alguna de las implicancias/restricciones del problema utilizando triggers. TODO(Gaston)
 * Pulir el informe
 * Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion
