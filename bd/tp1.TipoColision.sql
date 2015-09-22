@@ -3,6 +3,6 @@
 
 CREATE TABLE `TipoColision` (
   `idTipoColision` int(11) NOT NULL,
-  `Descipcion` varchar(200) NOT NULL,
+  `Descripcion` varchar(200) NOT NULL,
   PRIMARY KEY (`idTipoColision`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
