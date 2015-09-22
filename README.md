@@ -15,4 +15,6 @@ Repo para el tp1 de bases de datos.
     modalidad consultada.  Resuelto(Gaston)
   * Resolución de alguna de las implicancias/restricciones del problema utilizando triggers. TODO(Gaston)
 * Pulir el informe
-* Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion
+* Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion. Resuelto(Gaston) ALTER TABLE `tp1`.`tipocolision` 
+                                  CHANGE COLUMN `Descipcion` `Descripcion` VARCHAR(200) NOT NULL COMMENT '' ;
+
