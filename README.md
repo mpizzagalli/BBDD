@@ -2,7 +2,6 @@ Repo para el tp1 de bases de datos.
 
 ## *TO DO:*
 
-* Hacer el MR en el informe
 * Hacer las aclaraciones sobre cosas que asumimos en el informe
 * Hacer las restricciones en lenguaje natural en el informe
 * Poner datos en la DB de manera que se puedan hacer los puntos siguientes
