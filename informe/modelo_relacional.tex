@@ -1,3 +1,82 @@
 \section{Modelo Relacional}
+\small
 
-Aca van las tablas del modelo relacional derivado del DER
+Por cuestiones de legibilidad, se ha separado el MR por sectores de acuerdo
+    al comportamiento que modela cada uno.
+
+\subsection{Análisis, estudios, peritajes}
+
+\textbf{Informe}(
+    \uline{idInforme},
+    contenido,
+    \dashuline{idTipoInforme}
+)\\
+\textbf{PK} = \textbf{CK} = \{idInforme\}\\
+\textbf{FK} = \{idTipoInforme\}\\
+
+\textbf{Funcionario}(
+    \uline{idFuncionario},
+    cargo,
+    \dashuline{DNI},
+    \dashuline{idOrganismo}
+)\\
+\textbf{PK} = \textbf{CK} = \{idFuncionario\}\\
+\textbf{FK} = \{DNI, idOrganismo\}\\
+
+\textbf{FueRealizadoPor}(
+    \dashuline{\uline{idFuncionario}},
+    \dashuline{\uline{idInforme}}
+)\\
+\textbf{PK} = \textbf{CK} = \{(idFuncionario, idInforme)\}\\
+\textbf{FK} = \{idFuncionario, idInforme\}\\
+
+\textbf{Organismo}(
+    \uline{idOrganismo},
+    nombre
+)\\
+\textbf{PK} = \textbf{CK} = \{idOrganismo\}\\
+
+\textbf{TipoInforme}(
+    \uline{idTipoInforme},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoInforme\}\\
+
+
+\subsection{Condiciones de clima, pavimento, iluminación, etc}
+
+\textbf{CondicionGeneral}(
+    \uline{idCondicion},
+    elementoSeguridadPeatonal,
+    \dashuline{idTipoCondClimatica},
+    \dashuline{idTipoDePavimento},
+    \dashuline{idEstadoIluminacion},
+    \dashuline{idEstadoVia}
+)\\
+\textbf{PK} = \textbf{CK} = \{idCondicion\}\\
+\textbf{FK} = \{idTipoCondClimatica, idTipoDePavimento, idEstadoIluminacion, idEstadoVia\}\\
+
+
+\textbf{TipoCondClimatica}(
+    \uline{idTipoCondClimatica},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} =  \{idTipoCondClimatica\}\\
+
+\textbf{TipoDePavimento}(
+    \uline{idTipoDePavimento},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idTipoDePavimento\}\\
+
+\textbf{TipoEstadoIluminacion}(
+    \uline{idEstadoIluminacion},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idEstadoIluminacion\}\\
+
+\textbf{TipoEstadoVia}(
+    \uline{idEstadoVia},
+    descripcion
+)\\
+\textbf{PK} = \textbf{CK} = \{idEstadoVia\}\\
