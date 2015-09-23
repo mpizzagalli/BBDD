@@ -1,3 +1,12 @@
 \section{Diseño Fisico}
 
-Aca van los detalles sobre el diseño fisico mas el codigo correspondiente a las consultas/store procedures/trigger pedidos en el enunciado
+El diseño fisico de nuestra solución lo implementamos sobre el motor de base de datos \texttt{MySQL}.
+% Aca van los detalles sobre el diseño fisico mas el codigo correspondiente a las consultas/store procedures/trigger pedidos en el enunciado
+
+\subsection{Consulta por número de licencia.}
+
+\lstinputlisting[language=SQL, firstline=1, lastline=53]{"../bd/Consultas/HistorialLicencia DDL.sql"}
+
+\subsection{Consulta por modalidad de accidentes viales.}
+
+\lstinputlisting[language=SQL, firstline=1, lastline=20]{../bd/Consultas/DetalleDeAccidentesPorModalidad.sql}

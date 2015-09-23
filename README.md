@@ -2,8 +2,8 @@ Repo para el tp1 de bases de datos.
 
 ## *TO DO:*
 
-* Hacer las aclaraciones sobre cosas que asumimos en el informe
-* Hacer las restricciones en lenguaje natural en el informe
+* AGREGAR las aclaraciones sobre cosas que asumimos QUE FALTEN en el informe
+* AGREGAR restricciones en lenguaje natural QUE FALTEN en el informe
 * Poner datos en la DB de manera que se puedan hacer los puntos siguientes
   * Consulta por número de licencia: obtener, con un número de licencia específico,
     información sobre los accidentes en los que ha participado el conductor propietario de
@@ -14,7 +14,11 @@ Repo para el tp1 de bases de datos.
     de conducir y la cantidad de veces que cada una de estas licencias incurrió en la
     modalidad consultada.  Resuelto(Gaston)
   * Resolución de alguna de las implicancias/restricciones del problema utilizando triggers. TODO(Gaston)
-* Pulir el informe
+* Pulir el informe, en particular:
+  * Diseño Fisico, que hay q aclarar aca??
+  * Conclusiones, tenemos algo q decir o lo volamos y fue?
+  * Completar LUs de Nacho y Gaston, completar o volar Resumen y Palabras Claves.
+  * Revisar un poco todo lo que ya esta echo.
 * Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion. Resuelto(Gaston) ALTER TABLE `tp1`.`tipocolision` 
                                   CHANGE COLUMN `Descipcion` `Descripcion` VARCHAR(200) NOT NULL COMMENT '' ;
 

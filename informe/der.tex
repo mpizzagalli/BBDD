@@ -1,16 +1,31 @@
 \section{Diagrama Entidad Relacion.}
-% \newpage
+
 \includegraphics[width=0.90\textheight,height=0.99\textwidth,angle=90]{imagenes/DER.png}
 
 \subsection{Restricciones adicionales.}
+Las restricciones adicionales que escapan el Diagrama de Entidad Relacion son:
 \begin{itemize}
 	\item No puede haber dos instancias de la entidad Autopista con mismo nombre.
 	\item No puede haber dos instancias de la entidad Ruta con mismo nombre y territorio.
 	\item No puede haber dos instancias de la entidad Calle con mismo nombre, ciudad y provincia.
 	\item Dado un siniestro, una persona solo puede relacionarse con este siniestro mediante un único rol (Conductor, Acompañante, Testigo, Peaton, Funcionario).
 	\item Dado un siniestro, el conjunto de Vehiculos que se relacionan con este siniestro y con la entidad acompañante esta incluido en el conjunto de Vehiculos que se relacionan con este mismo siniestro y con la entidad Conductor.
+	\item Dado un Informe, todos los funcionarios que lo realizaron son miembros de la misma organización.
 \end{itemize}
 
 
-
 % FALTAN RESTRICCIONES ADICIONALES
+
+\subsection{Asumpciones sobre el dominio del problema.}
+A la hora de plantear nuestra solución del problema, tomamos como verdaderas ciertas supociones, las cuales son:
+
+\begin{itemize}
+	\item Todo Conductor tiene Licencia de conducir.
+	\item Todo Vehiculo tiene al menos un conductor habilitado.
+	\item Todo Conductor tiene al menos un Vehiculo para el cual esta habilitado.
+	\item Todo Vehiculo tiene una Poliza de seguro.
+	\item Si un funcionario se vio involucrado en un siniestro entonces este no puede realizar ningun tipo de informe sobre el siniestro.
+	\item Cuando se habla de Tipo de Lugar o Tipo de Camino, lo tomamos como equivalente y lo modelamos en la entidad Via Publica.
+	\item La entidad Tipo de Informe representa analisis, peritaje y estudio.
+	\item No permitimos el trabajo intra-organismos, es decir los informes son realizados completamente por el mismo organismo.
+\end{itemize}
