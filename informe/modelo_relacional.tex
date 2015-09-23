@@ -40,7 +40,7 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
 \textbf{PK} = \textbf{CK} = \{idTipoAccidente\}\\
 
 
-\textbf{Participan}(
+\textbf{SiniestroVehiculoConductor}(
     \dashuline{\uline{idSiniestro}},
     \dashuline{\uline{dominio}},
     \dashuline{\uline{DNI}},
@@ -74,34 +74,21 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
 \textbf{FK} = \{DNI\}\\
 \textit{El caso es análogo para las entidades Peaton y Acompañante.}
 
-\textbf{Participan}(
-    \dashuline{\uline{DNI}},
-    \dashuline{\uline{idSiniestro}},
-    usoCinturon,
-    \dashuline{dominio}
-)\\
-\textbf{PK} = \{(DNI, idSiniestro)\}\\
-\textbf{CK} = \{(DNI, idSiniestro), (idSiniestro, dominio)\}\\
-\textbf{FK} = \{DNI, idSiniestro, dominio\}\\
-\textit{Esta relación vincula conductores, siniestros y vehículos.}
-
-\textbf{Participa}(
+\textbf{SiniestroPeaton}(
     \dashuline{\uline{DNI}},
     \dashuline{\uline{idSiniestro}}
 )\\
 \textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
 \textbf{FK} = \{DNI, idSiniestro\}\\
-\textit{El caso es análogo para la relacion Atestigua.}
+\textit{El caso es análogo para la relacion Atestigua (SiniestroTestigo).}
 
-\textbf{Participan}(
+\textbf{SiniestroAcompañante}(
     \dashuline{\uline{DNI}},
     \dashuline{\uline{idSiniestro}},
-    \dashuline{\uline{dominio}},
     usoCinturon
 )\\
 \textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
-\textbf{FK} = \{DNI, idSiniestro, dominio\}\\
-\textit{Esta relación vincula acompañantes, siniestros y vehículos.}
+\textbf{FK} = \{DNI, idSiniestro\}\\
 
 \textbf{Persona}(
     \uline{DNI},
