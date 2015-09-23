@@ -3,7 +3,7 @@ Repo para el tp1 de bases de datos.
 ## *TO DO:*
 
 * Hacer las aclaraciones sobre cosas que asumimos en el informe
-* Hacer las restricciones en lenguaje natural en el informe
+* AGREGAR restricciones en lenguaje natural QUE FALTEN en el informe
 * Poner datos en la DB de manera que se puedan hacer los puntos siguientes
   * Consulta por número de licencia: obtener, con un número de licencia específico,
     información sobre los accidentes en los que ha participado el conductor propietario de
@@ -17,4 +17,5 @@ Repo para el tp1 de bases de datos.
 * Pulir el informe
 * Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion. Resuelto(Gaston) ALTER TABLE `tp1`.`tipocolision` 
                                   CHANGE COLUMN `Descipcion` `Descripcion` VARCHAR(200) NOT NULL COMMENT '' ;
+* AGREGAR cualquier tipo de asumpcion sobre el dominio del problema que hayamos tomado.
 

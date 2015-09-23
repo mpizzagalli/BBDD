@@ -1,8 +1,9 @@
 \section{Diagrama Entidad Relacion.}
-% \newpage
+
 \includegraphics[width=0.90\textheight,height=0.99\textwidth,angle=90]{imagenes/DER.png}
 
 \subsection{Restricciones adicionales.}
+Las restricciones adicionales que escapan el Diagrama de Entidad Relacion son:
 \begin{itemize}
 	\item No puede haber dos instancias de la entidad Autopista con mismo nombre.
 	\item No puede haber dos instancias de la entidad Ruta con mismo nombre y territorio.
@@ -12,5 +13,17 @@
 \end{itemize}
 
 
-
 % FALTAN RESTRICCIONES ADICIONALES
+
+\subsection{Asumpciones sobre el dominio del problema.}
+A la hora de plantear nuestra solución del problema, tomamos como verdaderas ciertas supociones, las cuales son:
+
+\begin{itemize}
+	\item Todo Conductor tiene Licencia de conducir.
+	\item Todo Vehiculo tiene al menos un conductor habilitado.
+	\item Todo Conductor tiene al menos un Vehiculo para el cual esta habilitado.
+	\item Todo Vehiculo tiene una Poliza de seguro.
+	\item Si un funcionario se vio involucrado en un siniestro entonces este no puede realizar ningun tipo de informe sobre el siniestro.
+	\item Cuando se habla de Tipo de Lugar o Tipo de Camino, lo tomamos como equivalente y lo modelamos en la entidad Via Publica.
+	\item La entidad Tipo de Informe representa analisis, peritaje y estudio.
+\end{itemize}
