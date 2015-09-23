@@ -43,11 +43,9 @@ INSERT INTO `tipocolision` VALUES (6,"Choque contra guardrail");
 
 
 
-INSERT INTO `tipoaccidente` VALUES (1,"Leve");
-INSERT INTO `tipoaccidente` VALUES (2,"Grave");
-INSERT INTO `tipoaccidente` VALUES (3,"Fatal");
-
-
+INSERT INTO `tipoaccidente` VALUES (1,"Atropello");
+INSERT INTO `tipoaccidente` VALUES (2,"Vuelco");
+INSERT INTO `tipoaccidente` VALUES (3,"Incendio");
 
 INSERT INTO `estadoiluminacion` VALUES (1,"Excelente");
 INSERT INTO `estadoiluminacion` VALUES (2,"Bueno");
