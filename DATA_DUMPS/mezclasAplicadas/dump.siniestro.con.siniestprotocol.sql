@@ -1,0 +1,2 @@
+INSERT INTO `Siniestro` (`idSiniestro`,`idTipoCausaProbable`,`idTipoColision`,`Fecha`,`Hora`,`idVehiculo`,`idTipoAccidente`,`idLugar`,`Siniestrocol`) VALUES (1,2,2,"24-05-15","1450811881",2,1,2,224);
+INSERT INTO `Siniestro` (`idSiniestro`,`idTipoCausaProbable`,`idTipoColision`,`Fecha`,`Hora`,`idVehiculo`,`idTipoAccidente`,`idLugar`,`Siniestrocol`) VALUES (2,3,3,"10-08-16","1442223245",2,1,2,678);

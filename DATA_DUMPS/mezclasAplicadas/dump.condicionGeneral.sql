@@ -1,0 +1,3 @@
+INSERT INTO `CondicionGeneral` (`idCondicionGeneral`,`elementoDeSeguridadPeatonal`,`estadoIluminacion`,`TipoCondicionClimatica`,`TipoPavimento`,`TipoEstadoVia`) VALUES (1,1,3,2,1,1);
+INSERT INTO `CondicionGeneral` (`idCondicionGeneral`,`elementoDeSeguridadPeatonal`,`estadoIluminacion`,`TipoCondicionClimatica`,`TipoPavimento`,`TipoEstadoVia`) VALUES (2,1,2,2,1,1);
+INSERT INTO `CondicionGeneral` (`idCondicionGeneral`,`elementoDeSeguridadPeatonal`,`estadoIluminacion`,`TipoCondicionClimatica`,`TipoPavimento`,`TipoEstadoVia`) VALUES (3,0,4,1,4,1);

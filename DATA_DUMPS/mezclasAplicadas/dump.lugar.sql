@@ -1,0 +1,16 @@
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (3,"P.O. Box 308, 141 Consectetuer Road","-82.29898, 69.63814",25);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (4,"951-8563 Mauris, Rd.","-80.73311, 89.09933",10);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (5,"435-7026 Felis Street","76.35855, 117.86499",9);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (6,"1703 Enim Road","51.40171, -54.17645",17);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (7,"992-848 Pede, St.","-83.45521, 136.86512",12);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (8,"Ap #782-9714 Sed Av.","-42.5119, -42.85723",21);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (9,"1028 Dictum St.","3.18153, -177.07953",22);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (10,"Ap #626-891 Pharetra Road","-13.92041, 170.07754",14);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (11,"1895 Eget Rd.","-73.40206, 41.92247",7);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (12,"830-6190 Eu, Ave","-12.23351, 91.39786",6);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (13,"P.O. Box 964, 4623 Orci Ave","11.51173, 103.35449",4);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (14,"382 Faucibus St.","-51.83952, -98.24183",24);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (15,"Ap #981-3795 Faucibus Street","23.53835, -56.37749",23);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (16,"Ap #324-6138 Lorem, St.","-40.61459, -153.68694",13);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (17,"9289 Adipiscing Street","-47.87047, -82.89405",1);
+INSERT INTO `lugar` (`idLugar`,`Direccion`,`CoordenadasGPS`,`idViaPublica`) VALUES (18,"635-2196 Eget Road","29.44404, -177.08641",19);

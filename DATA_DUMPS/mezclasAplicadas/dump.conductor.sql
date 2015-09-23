@@ -1,0 +1,10 @@
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (23235783,64535);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (36881131,65564);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (41904291,20422);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (40966468,62609);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (30408855,42795);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (23965617,76121);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (35324098,65607);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (48978996,60951);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (29964964,70551);
+INSERT INTO `Conductor` (`DNI`,`nroLicencia`) VALUES (46152032,26779);

@@ -74,3 +74,7 @@ INSERT INTO `tipocondicionclimatica` VALUES (6,"Tormenta de nieve");
 INSERT INTO `tipopavimento` VALUES (1,"Asfalto");
 INSERT INTO `tipopavimento` VALUES (2,"Tierra");
 INSERT INTO `tipopavimento` VALUES (3,"Empedrado");
+
+INSERT INTO `categoria` VALUES (1,"Categoria 1");
+INSERT INTO `categoria` VALUES (2,"Categoria 2");
+INSERT INTO `categoria` VALUES (3,"Categoria 3");

@@ -1,0 +1,2 @@
+INSERT INTO `SiniestroTestigo` (`idSiniestro`,`DNI`,`Testimonio`) VALUES (1,19882470,"vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean");
+INSERT INTO `SiniestroTestigo` (`idSiniestro`,`DNI`,`Testimonio`) VALUES (2,26347701,"arcu eu odio tristique pharetra. Quisque ac libero nec ligula");

@@ -1,0 +1,2 @@
+INSERT INTO `Acompañante` (`DNI`) VALUES (40949085);
+INSERT INTO `Acompañante` (`DNI`) VALUES (46479797);

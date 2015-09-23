@@ -1,0 +1,2 @@
+INSERT INTO `Informe` (`idInforme`,`Siniestro_idSiniestro`,`Contenido`,`tipoInforme_idTipoInforme`) VALUES (1,2,"arcu. Morbi",1);
+INSERT INTO `Informe` (`idInforme`,`Siniestro_idSiniestro`,`Contenido`,`tipoInforme_idTipoInforme`) VALUES (2,1,"Vivamus euismod",2);
