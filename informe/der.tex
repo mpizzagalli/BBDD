@@ -10,6 +10,7 @@ Las restricciones adicionales que escapan el Diagrama de Entidad Relacion son:
 	\item No puede haber dos instancias de la entidad Calle con mismo nombre, ciudad y provincia.
 	\item Dado un siniestro, una persona solo puede relacionarse con este siniestro mediante un único rol (Conductor, Acompañante, Testigo, Peaton, Funcionario).
 	\item Dado un siniestro, el conjunto de Vehiculos que se relacionan con este siniestro y con la entidad acompañante esta incluido en el conjunto de Vehiculos que se relacionan con este mismo siniestro y con la entidad Conductor.
+	\item Dado un Informe, todos los funcionarios que lo realizaron son miembros de la misma organización.
 \end{itemize}
 
 
@@ -26,4 +27,5 @@ A la hora de plantear nuestra solución del problema, tomamos como verdaderas ci
 	\item Si un funcionario se vio involucrado en un siniestro entonces este no puede realizar ningun tipo de informe sobre el siniestro.
 	\item Cuando se habla de Tipo de Lugar o Tipo de Camino, lo tomamos como equivalente y lo modelamos en la entidad Via Publica.
 	\item La entidad Tipo de Informe representa analisis, peritaje y estudio.
+	\item No permitimos el trabajo intra-organismos, es decir los informes son realizados completamente por el mismo organismo.
 \end{itemize}
