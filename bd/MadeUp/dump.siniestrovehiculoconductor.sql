@@ -1,0 +1,2 @@
+INSERT INTO `SiniestroVehiculoConductor` (`idSiniestro`,`DNI`,`idVehiculo`,`UsoCinturon`) VALUES (1,46152032,1,0);
+INSERT INTO `SiniestroVehiculoConductor` (`idSiniestro`,`DNI`,`idVehiculo`,`UsoCinturon`) VALUES (2,23235783,2,1);

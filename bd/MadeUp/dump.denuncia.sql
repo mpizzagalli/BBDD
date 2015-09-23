@@ -1,0 +1,1 @@
+INSERT INTO `Denuncia` (`idDenuncia`,`Fecha`,`Descripcion`,`DNIDenunciante`) VALUES (1,"28-11-15","eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula.",21855409);

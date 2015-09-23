@@ -1,0 +1,2 @@
+INSERT INTO `Antecedente` (`idAntecedente`,`DNI`,`Fecha`,`Descripcion`) VALUES (1,22571722,"14-12-15","consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit");
+INSERT INTO `Antecedente` (`idAntecedente`,`DNI`,`Fecha`,`Descripcion`) VALUES (2,42111840,"26-10-14","vitae aliquam eros turpis non enim. Mauris quis turpis vitae");

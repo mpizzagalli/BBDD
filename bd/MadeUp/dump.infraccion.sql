@@ -1,0 +1,2 @@
+INSERT INTO `Infraccion` (`idInfraccion`,`DNI`,`idTipoInfraccion`,`Fecha`,`Comentario`) VALUES (1,23235783,1,"23-12-15","vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae");
+INSERT INTO `Infraccion` (`idInfraccion`,`DNI`,`idTipoInfraccion`,`Fecha`,`Comentario`) VALUES (2,30408855,3,"11-02-16","id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend");
