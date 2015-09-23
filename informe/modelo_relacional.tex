@@ -78,10 +78,12 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
     \dashuline{\uline{DNI}},
     \dashuline{\uline{idSiniestro}},
     usoCinturon,
-    \dashuline{idVehiculo}
+    \dashuline{dominio}
 )\\
-\textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
-\textbf{FK} = \{DNI, idSiniestro, idVehiculo\}\\
+\textbf{PK} = \{(DNI, idSiniestro)\}\\
+\textbf{CK} = \{(DNI, idSiniestro), (idSiniestro, dominio)\}\\
+\textbf{FK} = \{DNI, idSiniestro, dominio\}\\
+\textit{Esta relación vincula conductores, siniestros y vehículos.}
 
 \textbf{Participa}(
     \dashuline{\uline{DNI}},
@@ -91,13 +93,22 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
 \textbf{FK} = \{DNI, idSiniestro\}\\
 \textit{El caso es análogo para la relacion Atestigua.}
 
-\textbf{Persona}(
+\textbf{Participan}(
     \dashuline{\uline{DNI}},
+    \dashuline{\uline{idSiniestro}},
+    \dashuline{\uline{dominio}},
+    usoCinturon
+)\\
+\textbf{PK} = \textbf{CK} = \{(DNI, idSiniestro)\}\\
+\textbf{FK} = \{DNI, idSiniestro, dominio\}\\
+\textit{Esta relación vincula acompañantes, siniestros y vehículos.}
+
+\textbf{Persona}(
+    \uline{DNI},
     nombre,
     apellido
 )\\
 \textbf{PK} = \textbf{CK} = \{DNI\}\\
-\textbf{FK} = \{DNI\}\\
 
 \textbf{Antecedente}(
     \uline{idAntecedente},
@@ -115,7 +126,7 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
     \dashuline{idSiniestro}
 )\\
 \textbf{PK} = \textbf{CK} = \{idAntecedente\}\\
-\textbf{FK} = \{DNI\}\\
+\textbf{FK} = \{DNI, idSiniestro\}\\
 
 
 \subsection{Modelado de un conductor}
@@ -208,7 +219,7 @@ Por cuestiones de legibilidad, se ha dividido el modelo relacional en sectores
     \uline{\dashuline{DNI}},
     \uline{\dashuline{dominio}}
 )\\
-\textbf{PK} = \textbf{CK} = \{(DNI, idVehiculo)\}\\
+\textbf{PK} = \textbf{CK} = \{(DNI, dominio)\}\\
 \textbf{FK} = \{DNI, dominio\}
 
 
