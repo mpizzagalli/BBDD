@@ -12,7 +12,7 @@ inner join Siniestro on Siniestro.idTipoColision = TipoColision.idTipoColision
 inner join siniestrovehiculoconductor SVC on SVC.idSiniestro = Siniestro.idSiniestro 
 inner join Conductor on  Conductor.DNI = SVC.DNI 
 inner join Licencia on Conductor.nroLicencia = Licencia.nroLicencia
-where TipoColision.Descipcion = modalidad
+where TipoColision.Descripcion = modalidad
 group by Licencia.NroLicencia;
 
 END$$
