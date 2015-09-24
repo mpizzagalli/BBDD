@@ -1,6 +1,12 @@
 \section{Diseño Fisico}
 
 El diseño fisico de nuestra solución lo implementamos sobre el motor de base de datos \texttt{MySQL}.
+Constó de varias etapas, primero un modelado con la
+    herramienta MySqlWorkbench, y luego desarrollamos scripts para la creación de tablas
+    y para poblar las tablas con datos (situados en los directorios \texttt{bd}.
+Para crear las tablas se puede correr \texttt{mysql < create.sql}, y
+    para llenarlas con datos, correr \texttt{mysql < llenar.sql}.
+Esos datos fueron necesarios para probar las queries desarrolladas.
 % Aca van los detalles sobre el diseño fisico mas el codigo correspondiente a las consultas/store procedures/trigger pedidos en el enunciado
 
 \subsection{Consulta por número de licencia.}
