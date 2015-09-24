@@ -11,8 +11,17 @@ Esos datos fueron necesarios para probar las queries desarrolladas.
 
 \subsection{Consulta por número de licencia.}
 
+\subsubsection{version con sub-query}
 \lstinputlisting[language=SQL, firstline=1, lastline=53]{"../bd/Consultas/HistorialLicencia DDL.sql"}
+
+\subsubsection{version con Vista.}
+\lstinputlisting[language=SQL, firstline=1, lastline=25]{"../bd/Consultas/HistorialLicenciaConVista.sql"}
+
+\subsubsection{version con Trigger}
+Los triggers van cargando la tabla participa, hay un trigger por cada tipo de participante.
+\lstinputlisting[language=SQL, firstline=1, lastline=53]{"../bd/Consultas/ConsultaModoTrigger/06_HistorialLicenciaConTriggers.sql"}
 
 \subsection{Consulta por modalidad de accidentes viales.}
 
-\lstinputlisting[language=SQL, firstline=1, lastline=20]{../bd/Consultas/DetalleDeAccidentesPorModalidad.sql}
+\lstinputlisting[language=SQL, firstline=1, lastline=27]{../bd/Consultas/DetalleDeAccidentesPorModalidad.sql}
+

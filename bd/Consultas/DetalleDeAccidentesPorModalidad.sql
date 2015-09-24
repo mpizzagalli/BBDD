@@ -1,3 +1,10 @@
+/*
+Consulta por modalidad de accidentes viales: Obtener, dado una modalidad de 
+accidente (atropello, vuelco, incendio, etc), un listado de licencias de 
+conducir y la cantidad de veces que cada una de estas licencias incurrio en 
+la modaldidad consultada.
+*/
+
 USE `tp1`;
 DROP procedure IF EXISTS `DetalleDeAccidentesPorModalidad`;
 
