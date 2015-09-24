@@ -1,3 +1,13 @@
 \section{Conclusiones}
 
-Cnclusiones del tp
+
+Nos encontramos con varias soluciones para resolver el problema. Fueron muy valiosas las discuciones de ideas sobre diseños en el DER. También nos percatamos de la complejidad escondida que tienen los diseños, y como algo que parece simple puede ser muy complejo.
+Es muy importante invertir tiempo en el diseño para simplificar las consultas y en general el modelo en la base de datos. Tanto fue así, que con el modelo propuesto en el DER logramos soluciones a las consultas bastantes simples, incluso sin necesidad de Triggers.
+
+Para la resolución de las consultas surgieron distintas opciones. La consulta HistorialLicencia se realizo inicialmente con una subquery. Luego transformamos esta subquery en una Vista. Para finalizar realizamos la consulta generando una nueva tabla de Participantes en un siniestro. Esto generó un profundo aprendizage en el uso de los Triggers.
+
+En la generación de los datos tuvimos algunos inconvenientes para carga tablas con muchas FKs. Muchas de las cuales fueron creadas manualmente y con poca cantidad de registros. También nos hubiera gustado generar casos mas complejos, pero por la cantidad de depenedencias se hacia dificultoso.
+
+
+
+
