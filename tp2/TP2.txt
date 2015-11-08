@@ -1,0 +1,104 @@
+TP2 BBDD
+
+Parte 1
+
+a- Empleados que atendieron a clientes mayores de edad.
+embebimos los clientes dentro de los empleados,
+
+db.empleados.insert( { nroLegajo: 003, nombre: "Ernestino Juanes", clientes: [ {DNI: 40528343, Nombre: "Raul Juan Lopez", Edad: 14} ] } )
+db.empleados.insert( { nroLegajo: 002, nombre: "Juan Paez", clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15} ] } )
+db.empleados.insert( { nroLegajo: 001, nombre: "Joaquina Paez", clientes: [ {DNI: 30154820, Nombre: "Juan Perez", Edad: 25} ] } )
+
+db.empleados.find().pretty()
+
+db.empleados.aggregate( [{ $unwind: "$clientes" }, { $match: {"clientes.Edad": { $gt: 17 }}  }, {$group: { _id: "$nombre"}}	 ] )
+
+db.empleados.aggregate( [{ $unwind: "$clientes" }, { $match: {"clientes.Edad": { $gt: 17 }}  },{ $project : { _id:0, nombre: 1, nroLegajo: 1 } }  ] )
+
+db.empleados.aggregate( [{ $unwind: "$clientes" }, { $match: {"clientes.Edad": { $gt: 17 }}  }, {$group: { _id: "$nombre", nombre:{$first:"$nombre"}} }, {$project : { _id:0, nombre: 1}} ] )
+
+unwind expande el array de clientes y genera una copia de cada empleado con un solo cliente para poder filtrarlo.
+
+######################################################################################################
+
+b- Articulos mas vendidos:
+embebimos los DNIs de clientes q compraron dentro de los articulos y buscamos los maximos.
+
+intento fallido:
+
+db.articulos.insert( { CodBarras: 7231564345110546, Nombre: "1984", Compradores: [22222222] } )
+
+db.articulos.insert( { CodBarras: 0231564105110546, Nombre: "El principito", Compradores: [333333333, 22222222] } )
+
+db.articulos.aggregate([{ $unwind : "$Compradores"}, {$group : { _id: "$CodBarras", total: {$sum: 1} } }])
+
+Si asumimos que hay un unico articulo mas vendido:
+
+db.articulos.aggregate([{ $unwind : "$Compradores"}, {$group : { _id: "$CodBarras", CodBarras:{$first:"$CodBarras"}, Nombre:{$first:"$Nombre"}, totalVendidos: {$sum: 1} } },{$sort: {totalVendidos: -1}}, {$limit : 1} , {$project : { _id:0,CodBarras: 1, totalVendidos: 1, Nombre: 1}} ])
+
+#######################################################################################################################
+
+c- Sectores donde trabajan exactamente 3 empleados.
+en sector le metemos un array con los empleados y la tarea q cumple el empleado en ese sector (solo los ids).
+
+Sector: {
+  CodSector: int,
+  Empleados: [ {NroLegajo, idTarea}]
+}
+
+db.sectores.insert({CodSector: 1, Empleados: [{NroLegajo: 001, idTarea: 02},{NroLegajo: 002, idTarea: 03},{NroLegajo: 003, idTarea: 01}]})
+
+db.sectores.insert({CodSector: 2, Empleados: [{NroLegajo: 001, idTarea: 01},{NroLegajo: 002, idTarea: 07},{NroLegajo: 003, idTarea: 01},{NroLegajo: 001, idTarea: 02},{NroLegajo: 008, idTarea: 12}]})
+
+db.sectores.insert({CodSector: 4, Empleados: [{NroLegajo: 007, idTarea: 02},{NroLegajo: 003, idTarea: 11}]})
+
+db.sectores.aggregate([{ $unwind : "$Empleados"}, {$group : {_id: "$CodSector",CodSector:{$first:"$CodSector"}, totalEmpleados: {$sum: 1}}},{$project : {_id: 0, CodSector: 1, totalEmpleados:1}},{$match : {totalEmpleados :3 }} ])
+
+#######################################################################################################################
+
+d- El empleado que trabaja en mas sectores
+en empleado le agregamos una lista de Sector-tarea donde trabaja.
+
+Empleado: {
+  nroLegajo: int,
+  nombre: string,
+  clientes: [{DNI, Nombre, Edad}]
+  trabajos: [{CodSector, idTarea}]
+}
+
+db.empleados.insert( { nroLegajo: 006, nombre: "Ernestino Juanes", clientes: [ {DNI: 40528343, Nombre: "Raul Juan Lopez", Edad: 14} ] , trabajos: [{CodSector: 07, Tarea: 10}]} )
+db.empleados.insert( { nroLegajo: 005, nombre: "Juan Paez", clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15} ], trabajos: [{CodSector: 01, Tarea: 02},{CodSector: 04, Tarea: 03},{CodSector: 07, Tarea: 09}] } )
+db.empleados.insert( { nroLegajo: 004, nombre: "Joaquina Paez", clientes: [ {DNI: 30154820, Nombre: "Juan Perez", Edad: 25} ], trabajos: [{CodSector: 09, Tarea: 01},{CodSector: 03, Tarea: 05}] } )
+
+db.empleados.aggregate([{ $unwind : "$trabajos"}, {$group : {_id: "$nroLegajo",nroLegajo:{$first:"$nroLegajo"}, totalTrabajos: {$sum: 1}}},{$project : {_id: 0, nroLegajo: 1, totalTrabajos:1}},{$sort : {totalTrabajos: -1}},{$limit : 1} ])
+
+#######################################################################################################################
+
+e- Ranking de los clientes con mayor cantidad de compras.
+Asumo q se refiere a ordenarlos por la cantidad de compras q hizo cada uno, porque en el DER no dice nada de ranking ni votos ni nada...
+
+Cliente: {
+  DNI: int,
+  nombre: string,
+  edad: int,
+  compras: [{CodBarra}]
+}
+
+db.clientes.insert({DNI: 32012932, nombre: "Guillermo Rodriguez", edad: 23, compras: [{CodBarra: 321},{CodBarra: 023},{CodBarra: 231},{CodBarra: 123}]})
+
+db.clientes.insert({DNI: 33002654, nombre: "Pedro Juanes", edad: 28, compras: [{CodBarra: 023},{CodBarra: 231}]})
+
+db.clientes.insert({DNI: 38165687, nombre: "Carolina Hernandez", edad: 20, compras: [{CodBarra: 123}]})
+
+
+db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$DNI",DNI:{$first:"$DNI"},nombre:{$first:"$nombre"},totalCompras: {$sum:1}} }, {$project :{ _id:0, DNI:1, nombre:1, totalCompras:1}}, {$sort : {totalCompras : -1}} ] )
+
+#######################################################################################################################
+
+f- Cantidad de compras realizadas por clientes de misma edad.
+
+db.clientes.insert({DNI: 33002654, nombre: "Juan Martinez", edad: 28, compras: [{CodBarra: 007},{CodBarra: 109},{CodBarra: 182}]})
+
+db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$edad", edad: {$first:"$edad"},totalCompras:{$sum:1}}}, {$project: {_id: 0, edad: 1, totalCompras: 1}}])
+
+
