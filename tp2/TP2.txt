@@ -5,6 +5,15 @@ Parte 1
 a- Empleados que atendieron a clientes mayores de edad.
 embebimos los clientes dentro de los empleados,
 
+Empleado: {
+  nroLegajo: int,
+  nombre: string,
+  clientes: [{DNI, Nombre, Edad}]
+  trabajos: [{CodSector, idTarea}]
+}
+
+TODO falta agregarle la fecha en q atendieron a cada cliente.
+
 db.empleados.insert( { nroLegajo: 003, nombre: "Ernestino Juanes", clientes: [ {DNI: 40528343, Nombre: "Raul Juan Lopez", Edad: 14} ] } )
 db.empleados.insert( { nroLegajo: 002, nombre: "Juan Paez", clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15} ] } )
 db.empleados.insert( { nroLegajo: 001, nombre: "Joaquina Paez", clientes: [ {DNI: 30154820, Nombre: "Juan Perez", Edad: 25} ] } )
@@ -23,6 +32,12 @@ unwind expande el array de clientes y genera una copia de cada empleado con un s
 
 b- Articulos mas vendidos:
 embebimos los DNIs de clientes q compraron dentro de los articulos y buscamos los maximos.
+
+Articulos: {
+  CobBarras: int,
+  nombre: string,
+  compradores: [{DNI}]
+}
 
 intento fallido:
 
@@ -101,4 +116,42 @@ db.clientes.insert({DNI: 33002654, nombre: "Juan Martinez", edad: 28, compras: [
 
 db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$edad", edad: {$first:"$edad"},totalCompras:{$sum:1}}}, {$project: {_id: 0, edad: 1, totalCompras: 1}}])
 
+#######################################################################################################################
 
+#######################################################################################################################
+
+Parte 2, MAP REDUCE:
+
+a- Cantidad disposiciones de tipo resolucion que se hayan realizado en abril del 2013.
+IDEA:
+map:
+si el registro dado es de tipo resolucion y tiene fecha abril del 2013, emitir("resolucion",cant=1)
+
+reduce:
+sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
+
+b- cantidad de disposiciones de cada tipo definido.
+IDEA:
+map:
+emitir (tipo,cant=1)
+
+reduce:
+sumar los cant q nos pasan y emitir lo mismo (tipo,suma)
+
+c-la fecha mas citada por todos los informes, descartar las fechas embebidas en descripcion.
+No entiendo a que se refiere, piden la fecha q mas resoluciones tiene? Si es esto se me ocurre:
+IDEA:
+map:
+emitir(fecha,cant=1)
+
+reduce:
+sumas los cant y emitir (fecha,cant)
+
+y de ese resultado quedarnos con el maximo.
+
+d-La mayor cantidad de paginas usadas por cada tipo de disposicion.
+IDEA:
+map: emitir(tipo,cantPaginas)
+
+reduce:
+buscar el maximo entre todos los cantPaginas q nos llega y emitir (tipo,maxCantPaginas)

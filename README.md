@@ -1,24 +1,9 @@
-Repo para el tp1 de bases de datos.
+Repo para los tps de bases de datos.
 
-## *TO DO:*
+Consultas a hacer para el TP2:
+Parte 1:
+- Hay alguna forma de devolver todos los registros que cumplen que son el maximo segun un valor? Porque ahora solo estamos devolviendo el maximo o uno de los maximos en caso de haber mas.
+- A que se refiere con el ranking de los clientes con mas compras? Ordenar segun la cantidad de compras de cada cliente? Porque en el DER no se menciona nada sobre ranking, ni votos, ni nada por el estilo.
 
-* AGREGAR las aclaraciones sobre cosas que asumimos QUE FALTEN en el informe
-* AGREGAR restricciones en lenguaje natural QUE FALTEN en el informe
-* Poner datos en la DB de manera que se puedan hacer los puntos siguientes
-  * Consulta por número de licencia: obtener, con un número de licencia específico,
-    información sobre los accidentes en los que ha participado el conductor propietario de
-    la misma, con detalles de fecha, lugar, tipo de accidente, participación y modalidad.
-    También se deberá indicar la cantidad de automóviles que está habilitado a conducir. Resuelto (Gaston)
-  * Consulta por modalidad de accidentes viales: obtener, dada una modalidad de
-    accidente (atropello, vuelco, incendio, caída del ocupante, etc), un listado de licencias
-    de conducir y la cantidad de veces que cada una de estas licencias incurrió en la
-    modalidad consultada.  Resuelto(Gaston)
-  * Resolución de alguna de las implicancias/restricciones del problema utilizando triggers. TODO(Gaston)
-* Pulir el informe, en particular:
-  * Diseño Fisico, que hay q aclarar aca??
-  * Conclusiones, tenemos algo q decir o lo volamos y fue?
-  * Completar LUs de Nacho y Gaston, completar o volar Resumen y Palabras Claves.
-  * Revisar un poco todo lo que ya esta echo.
-* Cambiar el campo TipoColision.Descipcion por TipoColision.Descripcion. Resuelto(Gaston) ALTER TABLE `tp1`.`tipocolision` 
-                                  CHANGE COLUMN `Descipcion` `Descripcion` VARCHAR(200) NOT NULL COMMENT '' ;
-
+Parte 2:
+- Devolver la fecha mas citada para todos los informes, a que se refiere? A la fecha que tenga mas disposiciones?
