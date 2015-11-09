@@ -122,21 +122,52 @@ db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$edad", edad: {$
 
 Parte 2, MAP REDUCE:
 
+Para importar los json hacer:
+mongoimport --db DB --collection COLLECTION --file disposiciones_201*.json --jsonArray
+
+por ejemplo:
+mongoimport --db tp2 --collection disposiciones --file disposiciones_2014.json --jsonArray
+
+Para cargar el codigo desde un .js se puede hacer load("codigo.js")
+
 a- Cantidad disposiciones de tipo resolucion que se hayan realizado en abril del 2013.
 IDEA:
 map:
 si el registro dado es de tipo resolucion y tiene fecha abril del 2013, emitir("resolucion",cant=1)
 
+var map1 = function(){
+  var date = this["FechaBOJA"].split('/')
+  if(this["Tipo"] == "Resoluciones" && date[1] == 4 && date[2] == 2013){
+    emit(this["Tipo"],1)
+  }
+}
+
 reduce:
 sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
+
+var reduce1 = function(key,values){
+  return Array.sum(values)
+}
+
+luego correr db.disposiciones.mapReduce(map1,reduce1,{out: parte2a})
 
 b- cantidad de disposiciones de cada tipo definido.
 IDEA:
 map:
 emitir (tipo,cant=1)
 
+var map2 = function(){
+  emit(this["Tipo"],1)
+}
+
 reduce:
 sumar los cant q nos pasan y emitir lo mismo (tipo,suma)
+
+var reduce2 = function(key,values){
+  return Array.sum(values)
+}
+
+luego correr db.disposiciones.mapReduce(map1,reduce1,{out: parte2b})
 
 c-la fecha mas citada por todos los informes, descartar las fechas embebidas en descripcion.
 No entiendo a que se refiere, piden la fecha q mas resoluciones tiene? Si es esto se me ocurre:
@@ -153,5 +184,20 @@ d-La mayor cantidad de paginas usadas por cada tipo de disposicion.
 IDEA:
 map: emitir(tipo,cantPaginas)
 
+var map4 = function(){
+  var cantPags = this["PaginaFinal"] - this["PaginaInicial"] + 1
+  emit(this["Tipo"],cantPags)
+}
+
 reduce:
 buscar el maximo entre todos los cantPaginas q nos llega y emitir (tipo,maxCantPaginas)
+
+var reduce4 = function(key,values){
+  var cantPagsMax = 0;
+  for (var i=0; i < values.length; i++){
+    if(values[i] > cantPagsMax){
+      cantPagsMax = values[i];
+    }
+  }
+  return(cantPagsMax);
+}
