@@ -7,3 +7,4 @@ Parte 1:
 
 Parte 2:
 - Devolver la fecha mas citada para todos los informes, a que se refiere? A la fecha que tenga mas disposiciones? [Contestada]
+- Cuando piden resoluciones de abril de 2013, se refien a fecha BOJA o fecha disposicion? Yo por ahora asumi q hablamos de fecha BOJA.

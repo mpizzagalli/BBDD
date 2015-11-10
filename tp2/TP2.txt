@@ -167,18 +167,33 @@ var reduce2 = function(key,values){
   return Array.sum(values)
 }
 
-luego correr db.disposiciones.mapReduce(map1,reduce1,{out: parte2b})
+luego correr db.disposiciones.mapReduce(map2,reduce2,{out: parte2b})
 
 c-la fecha mas citada por todos los informes, descartar las fechas embebidas en descripcion.
 No entiendo a que se refiere, piden la fecha q mas resoluciones tiene? Si es esto se me ocurre:
 IDEA:
 map:
-emitir(fecha,cant=1)
+parsear la fechaBOJA y la fecha disposicion, matchearles el formato, luego:
+emitir(fechaBOJA,cant=1)
+emitir(fechaDisposicion,cant=1)
+
+var map3 = function(){
+  var date = (this["FechaDisposicion"].split('T'))[0].split('-').reverse().join('/');
+  emit(date,1);
+  emit(this["FechaBOJA"],1);
+}
 
 reduce:
 sumas los cant y emitir (fecha,cant)
 
+var reduce3 = function(key,values){
+  return Array.sum(values)
+}
+
+db.disposiciones.mapReduce(map3,reduce3,{out: parte2c})
+
 y de ese resultado quedarnos con el maximo.
+db.parte2c.find().sort({value : -1}).limit(1)
 
 d-La mayor cantidad de paginas usadas por cada tipo de disposicion.
 IDEA:
@@ -230,7 +245,7 @@ Parte1:
             de iterar y mediante código buscar cuando |empleados|==3
 
     1d:
-        Un diccionario empleado -> [sectores]. Idem 1c usando SCAN. 
+        Un diccionario empleado -> [sectores]. Idem 1c usando SCAN.
 
     1e:
         Diccionario cliente  -> [compras]. Idem 1c, pero ordenando mediante |compras|.
