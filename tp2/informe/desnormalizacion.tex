@@ -53,7 +53,7 @@ Luego, una vez insertados los registros deseados, corremos la consulta mencionad
 \end{lstlisting}
 
 \subsection{Articulos mas vendidos.}
-embebimos los DNIs de clientes q compraron dentro de los articulos y buscamos los maximos.
+Embebimos los DNIs de clientes que compraron dentro de los artículos y buscamos los máximos.
 
 \begin{lstlisting}
 Articulos: {
@@ -63,7 +63,7 @@ Articulos: {
 }
 \end{lstlisting}
 
-Asumimos que hay un unico articulo mas vendido:
+Asumimos que hay un único articulo mas vendido:
 \begin{lstlisting}
 db.articulos.aggregate(
   [
@@ -87,30 +87,95 @@ db.articulos.insert( { CodBarras: 0231564105110546,
   Nombre: "El principito", Compradores: [333333333, 22222222] } )
 \end{lstlisting}
 
-\begin{lstlisting}
-\end{lstlisting}
 
 \subsection{Sectores donde trabaja exactamente 3 empleado.}
 
+\begin{lstlisting}
+Sector: {
+CodSector: int,
+Empleados: [ {NroLegajo, idTarea}]
+}
+
+\end{lstlisting}
+
+\begin{lstlisting}
+db.sectores.aggregate([{ $unwind : "$Empleados"}, {$group : {_id: "$CodSector",CodSector:{$first:"$CodSector"}, totalEmpleados: {$sum: 1}}},{$project : {_id: 0, CodSector: 1, totalEmpleados:1}},{$match : {totalEmpleados :3 }} ])
+\end{lstlisting}
+
 \subsubsection{Ejemplo}
 \begin{lstlisting}
+
+
+db.sectores.insert({CodSector: 1, Empleados: [{NroLegajo: 001, idTarea: 02},{NroLegajo: 002, idTarea: 03},{NroLegajo: 003, idTarea: 01}]})
+
+db.sectores.insert({CodSector: 2, Empleados: [{NroLegajo: 001, idTarea: 01},{NroLegajo: 002, idTarea: 07},{NroLegajo: 003, idTarea: 01},{NroLegajo: 001, idTarea: 02},{NroLegajo: 008, idTarea: 12}]})
+
+db.sectores.insert({CodSector: 4, Empleados: [{NroLegajo: 007, idTarea: 02},{NroLegajo: 003, idTarea: 11}]})
+
+
 \end{lstlisting}
 
 \subsection{Empleado que trabaja en más sectores..}
 
-\subsubsection{Ejemplo}
 \begin{lstlisting}
+Empleado: {
+nroLegajo: int,
+nombre: string,
+clientes: [{DNI, Nombre, Edad}]
+trabajos: [{CodSector, idTarea}]
+}
+
 \end{lstlisting}
 
-\subsection{Ranking de los clientes con mayor cantidad de compras.}
+
+\begin{lstlisting}
+db.empleados.aggregate([{ $unwind : "$trabajos"}, {$group : {_id: "$nroLegajo",nroLegajo:{$first:"$nroLegajo"}, totalTrabajos: {$sum: 1}}},{$project : {_id: 0, nroLegajo: 1, totalTrabajos:1}},{$sort : {totalTrabajos: -1}},{$limit : 1} ])
+\end{lstlisting}
 
 \subsubsection{Ejemplo}
+
 \begin{lstlisting}
+
+db.empleados.insert( { nroLegajo: 006, nombre: "Ernestino Juanes", clientes: [ {DNI: 40528343, Nombre: "Raul Juan Lopez", Edad: 14} ] , trabajos: [{CodSector: 07, Tarea: 10}]} )
+
+db.empleados.insert( { nroLegajo: 005, nombre: "Juan Paez", clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15} ], trabajos: [{CodSector: 01, Tarea: 02},{CodSector: 04, Tarea: 03},{CodSector: 07, Tarea: 09}] } )
+
+db.empleados.insert( { nroLegajo: 004, nombre: "Joaquina Paez", clientes: [ {DNI: 30154820, Nombre: "Juan Perez", Edad: 25} ], trabajos: [{CodSector: 09, Tarea: 01},{CodSector: 03, Tarea: 05}] } )
+
+\end{lstlisting}
+
+
+\subsection{Ranking de los clientes con mayor cantidad de compras.}
+Asumo que se refiere a ordenarlos por la cantidad de compras que hizo cada uno, porque en el DER no dice nada de ranking ni votos ni nada.
+\begin{lstlisting}
+
+Cliente: {
+DNI: int,
+nombre: string,
+edad: int,
+compras: [{CodBarra}]
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$DNI",DNI:{$first:"$DNI"},nombre:{$first:"$nombre"},totalCompras: {$sum:1}} }, {$project :{ _id:0, DNI:1, nombre:1, totalCompras:1}}, {$sort : {totalCompras : -1}} ] )
+\end{lstlisting}
+\subsubsection{Ejemplo}
+\begin{lstlisting}
+
+db.clientes.insert({DNI: 32012932, nombre: "Guillermo Rodriguez", edad: 23, compras: [{CodBarra: 321},{CodBarra: 023},{CodBarra: 231},{CodBarra: 123}]})
+
+db.clientes.insert({DNI: 33002654, nombre: "Pedro Juanes", edad: 28, compras: [{CodBarra: 023},{CodBarra: 231}]})
+
+db.clientes.insert({DNI: 38165687, nombre: "Carolina Hernandez", edad: 20, compras: [{CodBarra: 123}]})
 \end{lstlisting}
 
 
 \subsection{Cantidad de compras realizadas por clientes de misma edad.}
 
+db.clientes.aggregate([{ $unwind: "$compras"}, {$group : {_id: "$edad", edad: {$first:"$edad"},totalCompras:{$sum:1}}}, {$project: {_id: 0, edad: 1, totalCompras: 1}}])
+
 \subsubsection{Ejemplo}
 \begin{lstlisting}
+db.clientes.insert({DNI: 33002654, nombre: "Juan Martinez", edad: 28, compras: [{CodBarra: 007},{CodBarra: 109},{CodBarra: 182}]})
 \end{lstlisting}

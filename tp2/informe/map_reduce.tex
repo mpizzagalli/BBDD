@@ -1,13 +1,20 @@
 \section{Map-Reduce.}
-Intro a MP, explicar como cargar datos y codigo.
+Para la resolución de los Map-Reduce tuvimos que cargar diferentes archivos .json. Esto se realizo con la siguiente metodología: 
 
-\subsection{Disposiciones de tipo resolucion en Abril de 2013.}
+mongoimport --db DB --collection COLLECTION --file disposiciones_201*.json --jsonArray
+
+Por ejemplo:
+mongoimport --db tp2 --collection disposiciones --file disposiciones_2014.json --jsonArray
+
+Para cargar el codigo desde un .js se puede hacer load("codigo.js")
+
+\subsection{Disposiciones de tipo resolución en Abril de 2013.}
 IDEA:
-map:
-si el registro dado es de tipo resolucion y tiene fecha abril del 2013, emitir("resolucion",cant=1)
+Map:
+Si el registro dado es de tipo resolución y tiene fecha abril del 2013, Emitir("resolucion",cant=1)
 
-reduce:
-sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
+Reduce:
+Sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
 
 \begin{lstlisting}
 var map1 = function(){
@@ -24,7 +31,7 @@ var reduce1 = function(key,values){
 }
 \end{lstlisting}
 
-luego llamar a la función de map-reduce de la forma:
+Luego llamar a la función de map-reduce de la forma:
 \begin{lstlisting}
 db.disposiciones.mapReduce(map1,reduce1,{out: parte2a})
 \end{lstlisting}
@@ -36,7 +43,77 @@ Lo que nos devuelve:
 \end{lstlisting}
 
 \subsection{Disposiciones de cada tipo.}
+Map:
+Emitir (tipo,cant=1)
+\begin{lstlisting}
+var map2 = function(){
+	emit(this["Tipo"],1)
+}
+
+\end{lstlisting}
+
+Reduce:
+Sumar los cant que nos pasan y emitir lo mismo (tipo,suma)
+\begin{lstlisting}
+var reduce2 = function(key,values){
+	return Array.sum(values)
+}
+\end{lstlisting}
+Luego correr: 
+\begin{lstlisting}
+db.disposiciones.mapReduce(map2,reduce2,{out: parte2b})
+\end{lstlisting}
 
 \subsection{Fecha mas citada.}
 
+IDEA:
+map:
+Parsear la fechaBOJA y la fecha disposicion, matchearles el formato, luego:
+emitir(fechaBOJA,cant=1)
+emitir(fechaDisposicion,cant=1)
+
+\begin{lstlisting}
+var map3 = function(){
+	var date = (this["FechaDisposicion"].split('T'))[0].split('-').reverse().join('/');
+	emit(date,1);
+	emit(this["FechaBOJA"],1);
+}
+\end{lstlisting}
+Reduce:
+Sumar los cant y emitir (fecha,cant)
+\begin{lstlisting}
+var reduce3 = function(key,values){
+	return Array.sum(values)
+}
+\end{lstlisting}
+\begin{lstlisting}
+db.disposiciones.mapReduce(map3,reduce3,{out: parte2c})
+\end{lstlisting}
+Luego, de ese resultado nos quedamos con el máximo.
+\begin{lstlisting}
+db.parte2c.find().sort({value : -1}).limit(1)
+\end{lstlisting}
+
 \subsection{Mayor cantidad de paginas por cada tipo.}
+
+IDEA:
+Map: emitir(tipo,cantPaginas)
+\begin{lstlisting}
+var map4 = function(){
+	var cantPags = this["PaginaFinal"] - this["PaginaInicial"] + 1
+	emit(this["Tipo"],cantPags)
+}
+\end{lstlisting}
+Reduce:
+Buscar el máximo entre todos los cantPaginas q nos llega y emitir (tipo,maxCantPaginas)
+\begin{lstlisting}
+var reduce4 = function(key,values){
+	var cantPagsMax = 0;
+	for (var i=0; i < values.length; i++){
+		if(values[i] > cantPagsMax){
+			cantPagsMax = values[i];
+		}
+	}
+	return(cantPagsMax);
+}
+\end{lstlisting}
