@@ -217,7 +217,26 @@ var reduce4 = function(key,values){
   return(cantPagsMax);
 }
 
+#######################################################################################################################
 
+#######################################################################################################################
+
+Parte 3, Sharding:
+
+Levantamos cinco shards siguiendo las instrucciones del archivo
+tutorial_sharding.txt.
+
+Luego creamos un indice simple sobre el atributo codigo_postal.
+
+Luego utilizamos importamos el codigo de insert_data.js donde tenemos
+funciones que nos permiten ingresar datos de a 20k y pedir las estadisticas
+y nos guardamos las estadisticas en archivos .txt aparte. Los mismos se encuentran en
+la carpeta mediciones.
+
+
+#######################################################################################################################
+
+#######################################################################################################################
 
 Parte 4
 =======
