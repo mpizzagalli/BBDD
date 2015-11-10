@@ -1,0 +1,116 @@
+\section{Desnormalización.}
+Pequeña intro al problema...
+
+\subsection{Empleados que atendieron clientes mayores de edad.}
+
+embebimos los clientes dentro de los empleados, con la fecha de atención, quedando nos asi:
+
+\begin{lstlisting}
+Empleado: {
+  nroLegajo: int,
+  nombre: string,
+  clientes: [{DNI, Nombre, Edad, Fecha}],
+  ...
+}
+\end{lstlisting}
+
+Luego, para responder la consulta deseada hay que correr:
+
+\begin{lstlisting}
+db.empleados.aggregate(
+  [
+    { $unwind: "$clientes" },
+    { $match: {"clientes.Edad": { $gt: 17 } }  },
+    { $group: { _id: "$nombre", nombre:{$first:"$nombre" } } },
+    { $project : { _id:0, nombre: 1 } }
+  ]
+)
+\end{lstlisting}
+\label{consulta-a}
+
+\subsubsection{Ejemplo}
+
+Para insertar registros en la base corremos:
+
+\begin{lstlisting}
+db.empleados.insert( { nroLegajo: 003, nombre: "Ernestino Juanes",
+  clientes: [ {DNI: 40528343,  Nombre: "Raul Juan Lopez", Edad: 14,
+  Fecha: "14/03/2015"} ] } )
+db.empleados.insert( { nroLegajo: 002, nombre: "Juan Paez",
+  clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23,
+  Fecha: "20/04/2015"}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15,
+  Fecha: "23/04/2015"} ] } )
+db.empleados.insert( { nroLegajo: 001, nombre: "Joaquina Paez",
+  clientes: [ {DNI: 30154820,  Nombre: "Juan Perez", Edad: 25,
+  Fecha: "03/04/2015"} ] } )
+\end{lstlisting}
+
+Luego, una vez insertados los registros deseados, corremos la consulta mencionada arriba y nos da:
+
+\begin{lstlisting}
+{ "nombre" : "Joaquina Paez" }
+{ "nombre" : "Juan Paez" }
+\end{lstlisting}
+
+\subsection{Articulos mas vendidos.}
+embebimos los DNIs de clientes q compraron dentro de los articulos y buscamos los maximos.
+
+\begin{lstlisting}
+Articulos: {
+  CobBarras: int,
+  nombre: string,
+  compradores: [{DNI}]
+}
+\end{lstlisting}
+
+Asumimos que hay un unico articulo mas vendido:
+\begin{lstlisting}
+db.articulos.aggregate(
+  [
+    { $unwind : "$Compradores"},
+    {$group : { _id: "$CodBarras", CodBarras:{$first:"$CodBarras"},
+      Nombre:{$first:"$Nombre"}, totalVendidos: {$sum: 1} } },
+    {$sort: {totalVendidos: -1}},
+    {$limit : 1},
+    {$project : { _id:0,CodBarras: 1, totalVendidos: 1, Nombre: 1}}
+  ]
+)
+\end{lstlisting}
+
+\subsubsection{Ejemplo}
+
+\begin{lstlisting}
+db.articulos.insert( { CodBarras: 7231564345110546, Nombre: "1984",
+  Compradores: [22222222] } )
+
+db.articulos.insert( { CodBarras: 0231564105110546,
+  Nombre: "El principito", Compradores: [333333333, 22222222] } )
+\end{lstlisting}
+
+\begin{lstlisting}
+\end{lstlisting}
+
+\subsection{Sectores donde trabaja exactamente 3 empleado.}
+
+\subsubsection{Ejemplo}
+\begin{lstlisting}
+\end{lstlisting}
+
+\subsection{Empleado que trabaja en más sectores..}
+
+\subsubsection{Ejemplo}
+\begin{lstlisting}
+\end{lstlisting}
+
+\subsection{Ranking de los clientes con mayor cantidad de compras.}
+
+\subsubsection{Ejemplo}
+\begin{lstlisting}
+\end{lstlisting}
+
+
+\subsection{Cantidad de compras realizadas por clientes de misma edad.}
+
+\subsubsection{Ejemplo}
+\begin{lstlisting}
+\end{lstlisting}

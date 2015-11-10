@@ -1,0 +1,42 @@
+\section{Map-Reduce.}
+Intro a MP, explicar como cargar datos y codigo.
+
+\subsection{Disposiciones de tipo resolucion en Abril de 2013.}
+IDEA:
+map:
+si el registro dado es de tipo resolucion y tiene fecha abril del 2013, emitir("resolucion",cant=1)
+
+reduce:
+sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
+
+\begin{lstlisting}
+var map1 = function(){
+  var date = this["FechaBOJA"].split('/')
+  if(this["Tipo"] == "Resoluciones" && date[1]==4 && date[2]==2013){
+    emit(this["Tipo"],1)
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+var reduce1 = function(key,values){
+  return Array.sum(values)
+}
+\end{lstlisting}
+
+luego llamar a la función de map-reduce de la forma:
+\begin{lstlisting}
+db.disposiciones.mapReduce(map1,reduce1,{out: parte2a})
+\end{lstlisting}
+
+Lo que nos devuelve:
+
+\begin{lstlisting}
+{ "_id" : "Resoluciones", "value" : 607 }
+\end{lstlisting}
+
+\subsection{Disposiciones de cada tipo.}
+
+\subsection{Fecha mas citada.}
+
+\subsection{Mayor cantidad de paginas por cada tipo.}
