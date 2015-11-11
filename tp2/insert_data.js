@@ -5,7 +5,6 @@ var insertData = function(dbName, colName, num) {
   for (i = 0; i < num; i++) {
     x = Math.floor(Math.random() * 1000000);
     doc = {
-      id: i,
       nombre: 'Martin Juarez',
       password: 'asdasd' ,
       codigo_postal: x,
@@ -29,7 +28,6 @@ var insertDataTotal = function(dbName, colName, step, total) {
     for (i = 0; i < step; i++) {
       x = Math.floor(Math.random() * 1000000);
       doc = {
-        id: i,
         nombre: 'Martin Juarez',
         password: 'asdasd' ,
         codigo_postal: x,
