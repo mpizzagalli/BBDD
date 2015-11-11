@@ -1,12 +1,15 @@
 \section{Map-Reduce.}
-Para la resolución de los Map-Reduce tuvimos que cargar diferentes archivos .json. Esto se realizo con la siguiente metodología: 
-
-mongoimport --db DB --collection COLLECTION --file disposiciones_201*.json --jsonArray
+Para la resolución de los Map-Reduce tuvimos que cargar diferentes archivos .json. Esto se realizo con las siguientes instrucciones:
+\begin{lstlisting}
+mongoimport --db DB --collection COLLECTION --file 
+disposiciones_201*.json --jsonArray
 
 Por ejemplo:
-mongoimport --db tp2 --collection disposiciones --file disposiciones_2014.json --jsonArray
+mongoimport --db tp2 --collection disposiciones --file 
+disposiciones_2014.json --jsonArray
+\end{lstlisting}
 
-Para cargar el codigo desde un .js se puede hacer load("codigo.js")
+Para cargar el código desde un .js se puede hacer load("codigo.js")
 
 \subsection{Disposiciones de tipo resolución en Abril de 2013.}
 IDEA:
