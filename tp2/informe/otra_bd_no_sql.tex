@@ -7,7 +7,6 @@ Redis permite el uso de namespaces (tener varios "diccionarios", la terminologí
 Usar map-reduce en redis no es algo built-in ni estandar, pero investigamos y es posible, por
     ejemplo, integrarlo con Hadoop.
 
-\subsection{Parte 1}
 \begin{description}
 \item[1a] En redis hay un comando SCAN que permite iterar las claves.
         Con esto podemos iterar un diccionario de empleados, donde en cada
@@ -38,10 +37,8 @@ Usar map-reduce en redis no es algo built-in ni estandar, pero investigamos y es
         Otra opción es valerse de map reduce y usar alguno de los otros diccionarios,
             como el de 1a. Como ventaja, la consulta es simple y no hace falta crear un diccionario extra
             solo por esta consulta.
-\end{description}
 
-
-\subsection{Parte 2}
+\item[mapReduce]
     Asumimos que se crea un id único para las disposiciones, podría ser un hash de sus datos o
         la combinación (numeroBoja, paginaInicial, PaginaFinal) que asumimos que identifica
         univocamente a la disposicion. Entonces se tiene un diccionario id -> disposicion,
@@ -49,6 +46,8 @@ Usar map-reduce en redis no es algo built-in ni estandar, pero investigamos y es
 
     Dichas resoluciones por map-reduce son prácticamente iguales a las versiones hechas en mongodb
         ya que la entrada de la función map es practicamente la misma.
+
+\end{description}
 
 %Parte 3:
     %TODO: primero habría que hacerlo en mongodb jaja.
