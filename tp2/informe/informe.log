@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.10)  11 NOV 2015 00:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.10)  11 NOV 2015 16:16
 entering extended mode
 **informe.tex
 (informe.tex
@@ -722,9 +722,9 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \listing@line=\count157
 )
 \verbatim@out=\write4
-runsystem(touch w18-test-2015111133.tex)...disabled (restricted).
+runsystem(touch w18-test-20151111976.tex)...disabled (restricted).
 
-runsystem(rm -f w18-test-2015111133.tex)...disabled (restricted).
+runsystem(rm -f w18-test-20151111976.tex)...disabled (restricted).
 
 
 
@@ -1007,7 +1007,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
-<imagenes/logo_dc.jpg, id=94, 215.6055pt x 83.5923pt>
+<imagenes/logo_dc.jpg, id=102, 215.6055pt x 83.5923pt>
 File: imagenes/logo_dc.jpg Graphic file (type jpg)
 
 <use imagenes/logo_dc.jpg>
@@ -1044,7 +1044,7 @@ File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
 (Font)              scaled to size 10.79993pt on input line 177.
 
-<imagenes/logo_uba.jpg, id=95, 225.4824pt x 231.7458pt>
+<imagenes/logo_uba.jpg, id=103, 225.4824pt x 231.7458pt>
 File: imagenes/logo_uba.jpg Graphic file (type jpg)
 
 <use imagenes/logo_uba.jpg>
@@ -1124,20 +1124,55 @@ Overfull \hbox (5.83955pt too wide) in paragraph at lines 271--272
  []
 
 ) [9] (map_reduce.tex [10] [11]) [12] (sharding.tex
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
+Underfull \hbox (badness 1515) in paragraph at lines 3--4
+[]\T1/fve/m/n/12 MongoDB uti-li-za es-ta téc-ni-ca pa-ra ges-tio-nar la car-ga 
+de los ser-vi-do-res.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 []\T1/fve/m/n/12 Levantamos cin-co shards si-guien-do las ins-truc-cio-nes del 
 ar-chi-vo
  []
 
-) [13] (otra_bd_no_sql.tex
+[13] <../mediciones/sharding_simple.png, id=478, 687.31781pt x 499.8675pt>
+File: ../mediciones/sharding_simple.png Graphic file (type png)
+
+<use ../mediciones/sharding_simple.png>
+Package pdftex.def Info: ../mediciones/sharding_simple.png used on input line 7
+1.
+(pdftex.def)             Requested size: 469.47046pt x 341.43086pt.
+
+Overfull \hbox (8.74922pt too wide) in paragraph at lines 71--73
+ [][] 
+ []
+
+LaTeX Font Info:    Font shape `T1/fve/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 73.
+LaTeX Font Info:    Font shape `T1/fve/b/n' will be
+(Font)              scaled to size 9.85492pt on input line 73.
+[14] <../mediciones/sharding_hashed.png, id=511, 687.31781pt x 499.8675pt>
+File: ../mediciones/sharding_hashed.png Graphic file (type png)
+
+<use ../mediciones/sharding_hashed.png>
+Package pdftex.def Info: ../mediciones/sharding_hashed.png used on input line 8
+2.
+(pdftex.def)             Requested size: 469.47046pt x 341.43086pt.
+
+Overfull \hbox (8.74922pt too wide) in paragraph at lines 82--84
+ [][] 
+ []
+
+[15 <../mediciones/sharding_simple.png>]) [16 <../mediciones/sharding_hashed.pn
+g>] (otra_bd_no_sql.tex
 Underfull \hbox (badness 1430) in paragraph at lines 29--31
 []\T1/fve/m/n/12 1e: Dic-cio-na-rio clien-te -> [com-pras]. Idem 1c, pe-ro or-d
 e-nan-do me-dian-te
  []
 
-) [14] (conclusiones.tex) 
+) [17] (conclusiones.tex) 
 AED: lastpage setting LastPage
-[15]
+[18]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
  (informe.aux
@@ -1147,15 +1182,15 @@ LaTeX Info: Redefining \% on input line 19.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 194.
 Package rerunfilecheck Info: File `informe.out' has not changed.
-(rerunfilecheck)             Checksum: B7AD721CAF8A5504D0771E36B0A4043E;1640.
+(rerunfilecheck)             Checksum: D6828437AB862109F0C63AE8E73F8E10;1794.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
  ) 
 Here is how much of TeX's memory you used:
- 23449 strings out of 493673
- 412067 string characters out of 3143956
- 603438 words of memory out of 3000000
- 26017 multiletter control sequences out of 15000+200000
- 44697 words of font info for 57 fonts, out of 3000000 for 9000
+ 23530 strings out of 493673
+ 413452 string characters out of 3143956
+ 603443 words of memory out of 3000000
+ 26035 multiletter control sequences out of 15000+200000
+ 51310 words of font info for 61 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  55i,15n,54p,551b,1824s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
@@ -1165,9 +1200,9 @@ type1/bera/fveb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/bera/fver8a.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/bera/fvsb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/ber
 a/fvsr8a.pfb>
-Output written on informe.pdf (15 pages, 487183 bytes).
+Output written on informe.pdf (18 pages, 533091 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 303 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 630 PDF objects out of 1000 (max. 8388607)
+ 360 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 
