@@ -12,11 +12,10 @@ disposiciones_2014.json --jsonArray
 Para cargar el código desde un .js se puede hacer load("codigo.js")
 
 \subsection{Disposiciones de tipo resolución en Abril de 2013.}
-IDEA:
-Map:
+\textbf{Map:}
 Si el registro dado es de tipo resolución y tiene fecha abril del 2013, Emitir("resolucion",cant=1)
 
-Reduce:
+\textbf{Reduce:}
 Sumar los cant q nos pasan y emitir lo mismo ("resolucion",suma)
 
 \begin{lstlisting}
@@ -46,7 +45,7 @@ Lo que nos devuelve:
 \end{lstlisting}
 
 \subsection{Disposiciones de cada tipo.}
-Map:
+\textbf{Map:}
 Emitir (tipo,cant=1)
 \begin{lstlisting}
 var map2 = function(){
@@ -55,7 +54,7 @@ var map2 = function(){
 
 \end{lstlisting}
 
-Reduce:
+\textbf{Reduce:}
 Sumar los cant que nos pasan y emitir lo mismo (tipo,suma)
 \begin{lstlisting}
 var reduce2 = function(key,values){
@@ -69,20 +68,20 @@ db.disposiciones.mapReduce(map2,reduce2,{out: parte2b})
 
 \subsection{Fecha mas citada.}
 
-IDEA:
-map:
+\textbf{Map:}
 Parsear la fechaBOJA y la fecha disposicion, matchearles el formato, luego:
 emitir(fechaBOJA,cant=1)
 emitir(fechaDisposicion,cant=1)
 
 \begin{lstlisting}
 var map3 = function(){
-	var date = (this["FechaDisposicion"].split('T'))[0].split('-').reverse().join('/');
+	var date = (this["FechaDisposicion"].split('T'))[0].
+		split('-').reverse().join('/');
 	emit(date,1);
 	emit(this["FechaBOJA"],1);
 }
 \end{lstlisting}
-Reduce:
+\textbf{Reduce:}
 Sumar los cant y emitir (fecha,cant)
 \begin{lstlisting}
 var reduce3 = function(key,values){
@@ -97,18 +96,17 @@ Luego, de ese resultado nos quedamos con el máximo.
 db.parte2c.find().sort({value : -1}).limit(1)
 \end{lstlisting}
 
-\subsection{Mayor cantidad de paginas por cada tipo.}
+\subsection{Mayor cantidad de páginas por cada tipo.}
 
-IDEA:
-Map: emitir(tipo,cantPaginas)
+\textbf{Map:} emitir(tipo,cantPaginas)
 \begin{lstlisting}
 var map4 = function(){
 	var cantPags = this["PaginaFinal"] - this["PaginaInicial"] + 1
 	emit(this["Tipo"],cantPags)
 }
 \end{lstlisting}
-Reduce:
-Buscar el máximo entre todos los cantPaginas q nos llega y emitir (tipo,maxCantPaginas)
+\textbf{Reduce:}
+Buscar el máximo entre todos los cantPaginas que nos llega y emitir (tipo,maxCantPaginas)
 \begin{lstlisting}
 var reduce4 = function(key,values){
 	var cantPagsMax = 0;

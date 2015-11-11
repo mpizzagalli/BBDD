@@ -1,3 +1,10 @@
+\section{Introdución.}
+El trabajo práctico esta enfocado en aprender el uso de las diferenctes funcionalidad disponibles en la base de datos MongoDB. Consiste en resolver distintos ejercicios utilizando esta base de datos No relacional. Dentro de las bases No relaciones, Mongo DB es una base orientada a Documentos. Esto quiere decir que en lugar de guardar los datos en registros, guarda los datos en documentos. Estos documentos son almacenados en un formato BSON, que es una representación binaria de JSON.
+ 
+Una de las diferencias más importantes con respecto a las bases de datos relacionales, es que no es necesario seguir un esquema. Los documentos de una misma colección - concepto similar a una tabla de una base de datos relacional -, pueden tener esquemas diferentes.
+
+En el trabajo vamos a experimentar y desarrollar ejercicios sobre Desnormalización, Map-Reduce y Sharding. También haremos una comparativa con otras bases de datos No Relaciones.
+
 \section{Desnormalización.}
 Pequeña intro al problema...
 
@@ -33,16 +40,42 @@ db.empleados.aggregate(
 Para insertar registros en la base corremos:
 
 \begin{lstlisting}
-db.empleados.insert( { nroLegajo: 003, nombre: "Ernestino Juanes",
-  clientes: [ {DNI: 40528343,  Nombre: "Raul Juan Lopez", Edad: 14,
-  Fecha: "14/03/2015"} ] } )
-db.empleados.insert( { nroLegajo: 002, nombre: "Juan Paez",
-  clientes: [ {DNI: 30154820, Nombre: "Juana Perez", Edad: 23,
-  Fecha: "20/04/2015"}, {DNI: 40528753, Nombre: "Raul Lopez", Edad: 15,
-  Fecha: "23/04/2015"} ] } )
-db.empleados.insert( { nroLegajo: 001, nombre: "Joaquina Paez",
-  clientes: [ {DNI: 30154820,  Nombre: "Juan Perez", Edad: 25,
-  Fecha: "03/04/2015"} ] } )
+db.empleados.insert( { 
+	nroLegajo: 003, 
+	nombre: "Ernestino Juanes",
+	clientes: [ 
+		{DNI: 40528343,  
+		Nombre: "Raul Juan Lopez", 
+		Edad: 14,
+		Fecha: "14/03/2015"} ] } )
+
+db.empleados.insert( { 
+	nroLegajo: 002, 
+	nombre: "Juan Paez",
+	clientes: 
+	[ 
+		{
+		DNI: 30154820, 
+		Nombre: "Juana Perez", 
+		Edad: 23,
+		Fecha: "20/04/2015"
+		}, 
+		{
+		DNI: 40528753, 
+		Nombre: "Raul Lopez", 
+		Edad: 15,
+		Fecha: "23/04/2015"
+		} 
+	] } )
+
+db.empleados.insert( { 
+	nroLegajo: 001, 
+	nombre: "Joaquina Paez",
+	clientes: [ {
+		DNI: 30154820,  
+		Nombre: "Juan Perez", 
+		Edad: 25,
+		Fecha: "03/04/2015"} ] } )
 \end{lstlisting}
 
 Luego, una vez insertados los registros deseados, corremos la consulta mencionada arriba y nos da:
@@ -52,7 +85,7 @@ Luego, una vez insertados los registros deseados, corremos la consulta mencionad
 { "nombre" : "Juan Paez" }
 \end{lstlisting}
 
-\subsection{Articulos mas vendidos.}
+\subsection{Artículos mas vendidos.}
 Embebimos los DNIs de clientes que compraron dentro de los artículos y buscamos los máximos.
 
 \begin{lstlisting}
